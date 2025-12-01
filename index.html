@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>猴子技能展示 - 动态背景PPT</title>
+    <title>杨朔技能展示 - 清晰快速Emoji背景</title>
     <style>
         * {
             margin: 0;
@@ -18,11 +18,11 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            background: #1a1a2e;
+            background: #0a1520;
         }
         
-        /* 动态背景样式 */
-        .dynamic-bg {
+        /* 清晰快速Emoji背景 */
+        .emoji-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -32,6 +32,45 @@
             overflow: hidden;
         }
         
+        .emoji-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .emoji {
+            position: absolute;
+            font-size: 50px; /* 保持较大尺寸 */
+            opacity: 0.9; /* 不透明，清晰可见 */
+            animation: emojiFloat linear infinite;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+            user-select: none;
+            pointer-events: none;
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            text-shadow: 0 0 8px currentColor;
+            font-weight: bold;
+        }
+        
+        @keyframes emojiFloat {
+            0% {
+                transform: translateY(100vh) translateX(-30px) rotate(0deg) scale(0.9);
+                opacity: 0.9;
+            }
+            5% {
+                opacity: 0.9;
+            }
+            95% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-100px) translateX(30px) rotate(360deg) scale(1.1);
+                opacity: 0.9;
+            }
+        }
+        
         .bg-layer {
             position: absolute;
             width: 100%;
@@ -39,60 +78,9 @@
         }
         
         .layer-1 {
-            background: linear-gradient(45deg, #0f3460, #1a1a2e, #16213e);
-            opacity: 0.8;
-        }
-        
-        .layer-2 {
-            background: radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.3), transparent 30%),
-                       radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.2), transparent 30%),
-                       radial-gradient(circle at 40% 40%, rgba(255, 140, 0, 0.2), transparent 30%);
-            animation: pulse 8s infinite alternate;
-        }
-        
-        .floating-leaves {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .leaf {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.7;
-            animation: floatLeaf 20s infinite linear;
-        }
-        
-        .leaf:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; animation-duration: 25s; }
-        .leaf:nth-child(2) { top: 20%; left: 80%; animation-delay: 2s; animation-duration: 30s; }
-        .leaf:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; animation-duration: 20s; }
-        .leaf:nth-child(4) { top: 80%; left: 70%; animation-delay: 6s; animation-duration: 35s; }
-        .leaf:nth-child(5) { top: 40%; left: 90%; animation-delay: 8s; animation-duration: 28s; }
-        
-        @keyframes floatLeaf {
-            0% {
-                transform: translateY(100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 0.8;
-            }
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(139, 69, 19, 0.15), transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(255, 215, 0, 0.1), transparent 40%);
         }
         
         .presentation-container {
@@ -122,12 +110,13 @@
             opacity: 0;
             transform: translateX(100%);
             transition: transform 0.8s ease, opacity 0.8s ease;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.96); /* 提高幻灯片背景透明度 */
             border-radius: 15px;
             margin: 0 10%;
             width: 80%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); /* 加深阴影增加对比度 */
+            backdrop-filter: blur(6px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .slide.active {
@@ -145,8 +134,8 @@
             margin-bottom: 2rem;
             color: #8B4513;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(45deg, #8B4513, #CD853F);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #8B4513, #CD853F, #A0522D);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -155,10 +144,10 @@
         
         @keyframes titleGlow {
             0% {
-                filter: drop-shadow(0 0 5px rgba(139, 69, 19, 0.5));
+                filter: drop-shadow(0 0 8px rgba(139, 69, 19, 0.7));
             }
             100% {
-                filter: drop-shadow(0 0 15px rgba(205, 133, 63, 0.8));
+                filter: drop-shadow(0 0 18px rgba(205, 133, 63, 0.9));
             }
         }
         
@@ -167,15 +156,16 @@
             width: 100%;
             max-width: 1000px;
             align-items: center;
-            gap: 3rem;
+            gap: 2rem;
         }
         
         .slide-text {
             flex: 1;
-            font-size: 1.5rem;
-            line-height: 1.7;
+            font-size: 1.4rem;
+            line-height: 1.6;
             text-align: justify;
-            color: #444;
+            color: #333;
+            font-weight: 500;
         }
         
         .slide-image {
@@ -183,14 +173,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 10rem;
+            font-size: 8rem;
             background: linear-gradient(45deg, #f0e6d2, #e8d5b5, #d2b48c);
             border-radius: 15px;
-            height: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            height: 300px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             animation: iconFloat 4s infinite ease-in-out;
             position: relative;
             overflow: hidden;
+            border: 3px solid rgba(139, 69, 19, 0.3);
         }
         
         .slide-image::before {
@@ -200,7 +191,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
@@ -219,7 +210,7 @@
                 transform: translateY(0) scale(1);
             }
             50% {
-                transform: translateY(-10px) scale(1.05);
+                transform: translateY(-8px) scale(1.03);
             }
         }
         
@@ -227,50 +218,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3rem;
-            background: rgba(0, 0, 0, 0.7);
+            padding: 1.2rem 2rem;
+            background: rgba(0, 0, 0, 0.85);
             z-index: 10;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .nav-btn {
             background: linear-gradient(45deg, #8B4513, #A0522D);
             color: white;
             border: none;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .nav-btn:hover::before {
-            left: 100%;
+            gap: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
         
         .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .nav-btn:active {
-            transform: translateY(0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
         
         .progress-container {
@@ -283,66 +254,52 @@
         .progress-bar {
             display: flex;
             justify-content: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
         
         .progress-dot {
-            width: 16px;
-            height: 16px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
-        }
-        
-        .progress-dot::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
         }
         
         .progress-dot.active {
             background: white;
-            transform: scale(1.2);
-        }
-        
-        .progress-dot.active::after {
-            border-color: #8B4513;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.9);
         }
         
         .progress-text {
             color: white;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .slide-number {
             position: absolute;
             bottom: 1.5rem;
             right: 1.5rem;
-            background: rgba(139, 69, 19, 0.8);
+            background: rgba(139, 69, 19, 0.95);
             color: white;
-            padding: 0.7rem 1.2rem;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .title-slide {
             text-align: center;
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9));
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(160, 82, 45, 0.95));
             color: white;
         }
         
         .title-slide .slide-title {
             color: white;
-            font-size: 5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             background: none;
             -webkit-background-clip: unset;
@@ -353,30 +310,30 @@
         @keyframes titlePulse {
             0% {
                 transform: scale(1);
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
             }
             100% {
-                transform: scale(1.05);
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: scale(1.04);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
             }
         }
         
         .title-slide .slide-subtitle {
-            font-size: 2.2rem;
-            margin-bottom: 4rem;
-            opacity: 0.9;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
         }
         
         .title-slide .monkey-emoji {
-            font-size: 12rem;
-            margin-bottom: 3rem;
-            animation: bounce 2s infinite, rotate 8s infinite linear;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            font-size: 10rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite, rotate 10s infinite linear;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
         }
         
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            50% { transform: translateY(-20px); }
         }
         
         @keyframes rotate {
@@ -386,7 +343,7 @@
         
         .conclusion-slide {
             text-align: center;
-            background: linear-gradient(135deg, rgba(26, 42, 108, 0.9), rgba(178, 31, 31, 0.9));
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.95), rgba(178, 31, 31, 0.95));
             color: white;
         }
         
@@ -416,15 +373,16 @@
             position: absolute;
             bottom: 2rem;
             left: 2rem;
-            background: rgba(139, 69, 19, 0.8);
+            background: rgba(139, 69, 19, 0.95);
             color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            max-width: 300px;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.8rem;
+            border-radius: 8px;
+            max-width: 280px;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
             animation: fadeInOut 10s infinite;
             opacity: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         @keyframes fadeInOut {
@@ -432,70 +390,89 @@
             10%, 90% { opacity: 1; transform: translateY(0); }
         }
         
+        .performance-note {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #4CAF50;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 100;
+            opacity: 0.7;
+        }
+        
         @media (max-width: 768px) {
             .slide-content {
                 flex-direction: column;
+                gap: 1.5rem;
             }
             
             .slide-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .slide-text {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
             
             .slide-image {
-                font-size: 7rem;
-                height: 250px;
+                font-size: 6rem;
+                height: 200px;
             }
             
             .title-slide .slide-title {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
             }
             
             .title-slide .slide-subtitle {
-                font-size: 1.7rem;
+                font-size: 1.5rem;
             }
             
             .title-slide .monkey-emoji {
-                font-size: 9rem;
+                font-size: 7rem;
             }
             
             .navigation {
-                padding: 1rem;
+                padding: 0.8rem 1rem;
             }
             
             .nav-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .emoji {
+                font-size: 40px; /* 移动端稍微减小 */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .emoji {
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景元素 -->
-    <div class="dynamic-bg">
+    <!-- 清晰快速Emoji背景 -->
+    <div class="emoji-bg">
+        <div class="emoji-container" id="emoji-container"></div>
         <div class="bg-layer layer-1"></div>
-        <div class="bg-layer layer-2"></div>
-        <div class="floating-leaves">
-            <div class="leaf">🍃</div>
-            <div class="leaf">🍂</div>
-            <div class="leaf">🌿</div>
-            <div class="leaf">🍁</div>
-            <div class="leaf">🌱</div>
-        </div>
     </div>
     
     <div class="presentation-container">
+        <div class="performance-note">高性能模式 | 60 FPS</div>
+        
         <div class="slides-container">
             <!-- 标题幻灯片 -->
             <div class="slide active title-slide">
                 <div class="monkey-emoji">🐒</div>
-                <h1 class="slide-title">猴子的<span class="animated-text">惊人技能</span></h1>
+                <h1 class="slide-title">杨朔的<span class="animated-text">惊人技能</span></h1>
                 <p class="slide-subtitle">探索灵长类动物的独特能力</p>
                 <div class="slide-number">1 / 7</div>
-                <div class="fun-fact">你知道吗？猴子有独特的手指指纹，就像人类一样！</div>
+                <div class="fun-fact">你知道吗？杨朔有独特的手指指纹，就像人类一样！</div>
             </div>
             
             <!-- 幻灯片1 -->
@@ -503,14 +480,14 @@
                 <h2 class="slide-title">攀爬技巧</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>猴子是出色的攀爬者，它们拥有灵活的手指和脚趾，能够轻松地在树间移动。</p>
+                        <p>杨朔是出色的攀爬者，它们拥有灵活的手指和脚趾，能够轻松地在树间移动。</p>
                         <p>它们的尾巴在某些物种中可以作为第五肢使用，提供额外的支撑和平衡能力。</p>
                         <p>这种卓越的攀爬能力使猴子能够在森林中快速移动，逃避捕食者并寻找食物。</p>
                     </div>
                     <div class="slide-image">🌳</div>
                 </div>
                 <div class="slide-number">2 / 7</div>
-                <div class="fun-fact">蜘蛛猴的尾巴非常灵活，甚至可以捡起小物件！</div>
+                <div class="fun-fact">蜘蛛杨朔的尾巴非常灵活，甚至可以捡起小物件！</div>
             </div>
             
             <!-- 幻灯片2 -->
@@ -518,14 +495,14 @@
                 <h2 class="slide-title">工具使用</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>一些猴子物种，特别是卷尾猴，能够使用石头砸开坚果，用树枝捕捉昆虫。</p>
-                        <p>研究人员观察到猴子使用特定形状的石头作为"锤子"和"铁砧"来敲开坚硬的果实。</p>
+                        <p>一些杨朔，特别是卷尾，能够使用石头砸开坚果，用树枝捕捉昆虫。</p>
+                        <p>研究人员观察到杨朔使用特定形状的石头作为"锤子"和"铁砧"来敲开坚硬的果实。</p>
                         <p>这种工具使用能力显示了它们解决问题的智慧和适应环境的能力。</p>
                     </div>
                     <div class="slide-image">🛠️</div>
                 </div>
                 <div class="slide-number">3 / 7</div>
-                <div class="fun-fact">卷尾猴是已知会教授后代使用工具的少数动物之一！</div>
+                <div class="fun-fact">杨朔是已知会教授后代使用工具的少数动物之一！</div>
             </div>
             
             <!-- 幻灯片3 -->
@@ -533,8 +510,8 @@
                 <h2 class="slide-title">复杂沟通</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>猴子使用多种声音、面部表情和身体姿势进行沟通。它们有特定的警报叫声来警告同伴不同类型的捕食者。</p>
-                        <p>研究显示，某些猴子的叫声系统可以传达关于捕食者类型、大小和距离的详细信息。</p>
+                        <p>杨朔使用多种声音、面部表情和身体姿势进行沟通。它们有特定的警报叫声来警告同伴不同类型的捕食者。</p>
+                        <p>研究显示，某些杨朔的叫声系统可以传达关于捕食者类型、大小和距离的详细信息。</p>
                         <p>这种复杂的沟通系统有助于群体协作和生存。</p>
                     </div>
                     <div class="slide-image">🗣️</div>
@@ -548,14 +525,14 @@
                 <h2 class="slide-title">社会行为</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>猴子生活在复杂的社会群体中，有明确的等级制度。它们会互相梳理毛发以加强社会联系，并解决冲突。</p>
+                        <p>杨朔生活在复杂的社会群体中，有明确的等级制度。它们会互相梳理毛发以加强社会联系，并解决冲突。</p>
                         <p>社会学习在猴子群体中非常重要，幼猴通过观察和模仿成年猴子学习生存技能。</p>
-                        <p>一些猴子物种甚至表现出利他行为，会帮助群体中的其他成员。</p>
+                        <p>一些杨朔物种甚至表现出利他行为，会帮助群体中的其他成员。</p>
                     </div>
                     <div class="slide-image">🤝</div>
                 </div>
                 <div class="slide-number">5 / 7</div>
-                <div class="fun-fact">猴子互相梳理毛发不仅是为了清洁，更是为了建立和维持社会关系！</div>
+                <div class="fun-fact">杨朔互相梳理毛发不仅是为了清洁，更是为了建立和维持社会关系！</div>
             </div>
             
             <!-- 幻灯片5 -->
@@ -563,14 +540,14 @@
                 <h2 class="slide-title">觅食策略</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>猴子是杂食动物，有广泛的饮食。它们知道何时何地找到不同的食物，并记住季节性食物的位置。</p>
-                        <p>一些猴子物种会使用"文化传播"的方式，将觅食技巧传递给下一代。</p>
+                        <p>杨朔是杂食动物，有广泛的饮食。它们知道何时何地找到不同的食物，并记住季节性食物的位置。</p>
+                        <p>一些杨朔物种会使用"文化传播"的方式，将觅食技巧传递给下一代。</p>
                         <p>它们能够识别数百种不同的植物，知道哪些部分可食用，哪些有毒。</p>
                     </div>
                     <div class="slide-image">🍌</div>
                 </div>
                 <div class="slide-number">6 / 7</div>
-                <div class="fun-fact">日本猕猴发明了洗红薯的行为，这一传统已经传递了多代！</div>
+                <div class="fun-fact">杨朔发明了洗红薯的行为，这一传统已经传递了多代！</div>
             </div>
             
             <!-- 结论幻灯片 -->
@@ -578,14 +555,14 @@
                 <h2 class="slide-title">总结</h2>
                 <div class="slide-content">
                     <div class="slide-text">
-                        <p>猴子展示了令人惊叹的认知能力、社会复杂性和环境适应性。</p>
+                        <p>杨朔展示了令人惊叹的认知能力、社会复杂性和环境适应性。</p>
                         <p>从工具使用到复杂沟通，这些技能使它们成为最成功的灵长类动物之一。</p>
-                        <p>保护猴子的栖息地对于维持生态平衡和生物多样性至关重要。</p>
+                        <p>保护杨朔的栖息地对于维持生态平衡和生物多样性至关重要。</p>
                     </div>
                     <div class="slide-image">🎯</div>
                 </div>
                 <div class="slide-number">7 / 7</div>
-                <div class="fun-fact">全球有超过260种猴子，每一种都有其独特的技能和行为！</div>
+                <div class="fun-fact">全球有超过260种杨朔，每一种都有其独特的技能和行为！</div>
             </div>
         </div>
     </div>
@@ -687,6 +664,185 @@
                 // 更新按钮状态
                 prevBtn.disabled = index === 0;
                 nextBtn.disabled = index === slides.length - 1;
+            }
+            
+            // 创建清晰快速Emoji背景
+            createClearFastEmojiBackground();
+            
+            function createClearFastEmojiBackground() {
+                const container = document.getElementById('emoji-container');
+                const emojiList = ['😹', '🤣', '👎🏻', '🤓', '😋', '☠', '🔞', '☣', '🈲'];
+                
+                // 性能优化变量
+                let animationFrameId;
+                let lastTime = 0;
+                const fps = 60;
+                const interval = 1000 / fps;
+                
+                // 增加Emoji数量到120个
+                const totalEmojis = 120;
+                const emojiPool = [];
+                
+                // 初始化Emoji池
+                function initEmojiPool() {
+                    for (let i = 0; i < totalEmojis; i++) {
+                        createEmoji(true);
+                    }
+                }
+                
+                // 创建单个Emoji
+                function createEmoji(isInitial = false) {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji';
+                    
+                    // 随机选择Emoji
+                    const randomEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+                    emoji.textContent = randomEmoji;
+                    
+                    // 随机大小（40-70px）
+                    const size = Math.random() * 30 + 40;
+                    emoji.style.fontSize = `${size}px`;
+                    
+                    // 鲜艳的颜色
+                    const colors = [
+                        '#FF6B6B', '#4ECDC4', '#45B7D1', '#FECA57', '#FF9FF3',
+                        '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43', '#EE5A24',
+                        '#A3CB38', '#1289A7', '#D980FA', '#B53471', '#12CBC4',
+                        '#FDA7DF', '#ED4C67', '#5758BB', '#006266', '#1B1464'
+                    ];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    emoji.style.color = color;
+                    
+                    // 随机起始位置
+                    const left = Math.random() * 100;
+                    emoji.style.left = `${left}%`;
+                    
+                    // 更快的动画速度（5-15秒）
+                    const duration = Math.random() * 10 + 5; // 5-15秒
+                    emoji.style.animationDuration = `${duration}s`;
+                    
+                    // 随机动画延迟
+                    const delay = isInitial ? Math.random() * 3 : 0;
+                    emoji.style.animationDelay = `${delay}s`;
+                    
+                    // 不透明，清晰可见
+                    emoji.style.opacity = 0.9;
+                    
+                    // 随机Z-index
+                    const zIndex = Math.floor(Math.random() * 10) + 1;
+                    emoji.style.zIndex = zIndex;
+                    
+                    // 添加边框增强清晰度
+                    emoji.style.textShadow = `0 0 10px ${color}, 0 0 5px white`;
+                    
+                    container.appendChild(emoji);
+                    emojiPool.push(emoji);
+                    
+                    // 动画结束后重新开始
+                    setTimeout(() => {
+                        if (emoji.parentNode) {
+                            resetEmoji(emoji);
+                        }
+                    }, (duration + delay) * 1000);
+                }
+                
+                // 重置Emoji位置和属性
+                function resetEmoji(emoji) {
+                    if (!emoji.parentNode) return;
+                    
+                    // 更新位置
+                    const left = Math.random() * 100;
+                    emoji.style.left = `${left}%`;
+                    
+                    // 更新动画持续时间（保持快速）
+                    const duration = Math.random() * 10 + 5; // 5-15秒
+                    emoji.style.animationDuration = `${duration}s`;
+                    
+                    // 保持不透明
+                    emoji.style.opacity = 0.9;
+                    
+                    // 重新开始动画
+                    emoji.style.animation = 'none';
+                    setTimeout(() => {
+                        emoji.style.animation = `emojiFloat ${duration}s linear infinite`;
+                    }, 10);
+                    
+                    // 再次设置重置
+                    setTimeout(() => {
+                        resetEmoji(emoji);
+                    }, duration * 1000);
+                }
+                
+                // 初始化Emoji池
+                initEmojiPool();
+                
+                // 定期添加新Emoji（增加动态感）
+                setInterval(() => {
+                    // 如果总数少于150，添加新Emoji
+                    if (emojiPool.length < 150) {
+                        createEmoji();
+                    }
+                    // 如果总数超过180，移除一些旧的
+                    else if (emojiPool.length > 180) {
+                        const oldEmoji = emojiPool.shift();
+                        if (oldEmoji && oldEmoji.parentNode) {
+                            oldEmoji.parentNode.removeChild(oldEmoji);
+                        }
+                    }
+                }, 1000);
+                
+                // 动画循环
+                function animate(timestamp) {
+                    animationFrameId = requestAnimationFrame(animate);
+                    
+                    // 限制帧率
+                    if (timestamp - lastTime >= interval) {
+                        lastTime = timestamp;
+                        
+                        // 可以在这里添加其他动画逻辑
+                    }
+                }
+                
+                // 启动动画循环
+                animate(0);
+                
+                // 页面不可见时暂停动画以节省性能
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden) {
+                        cancelAnimationFrame(animationFrameId);
+                    } else {
+                        animate(0);
+                    }
+                });
+                
+                // 性能监控（可选）
+                let frameCount = 0;
+                let lastFpsUpdate = Date.now();
+                
+                function updateFPS() {
+                    frameCount++;
+                    const now = Date.now();
+                    if (now - lastFpsUpdate >= 1000) {
+                        // 更新FPS显示
+                        const fpsElement = document.querySelector('.performance-note');
+                        if (fpsElement) {
+                            fpsElement.textContent = `高性能模式 | ${frameCount} FPS`;
+                        }
+                        lastFpsUpdate = now;
+                        frameCount = 0;
+                    }
+                }
+                
+                // 将FPS更新整合到动画循环中
+                const originalAnimate = animate;
+                animate = function(timestamp) {
+                    animationFrameId = requestAnimationFrame(animate);
+                    
+                    if (timestamp - lastTime >= interval) {
+                        lastTime = timestamp;
+                        updateFPS();
+                    }
+                };
             }
         });
     </script>
